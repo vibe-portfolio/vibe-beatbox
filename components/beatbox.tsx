@@ -13,7 +13,7 @@ import { Play, Square, Download, RefreshCw, Zap, Music2, ChevronDown } from 'luc
 import { cn } from "@/lib/utils"
 import { ThemeToggle } from "@/components/theme-toggle"
 
-type BeatBotProps = {
+type BeatBoxProps = {
   defaultBpm?: number
 }
 
@@ -107,7 +107,7 @@ function hypeUp(pattern: Pattern, seed: number): Pattern {
   return { kick, snare, hat, bass }
 }
 
-export default function BeatBot({ defaultBpm = DEFAULT_BPM }: BeatBotProps) {
+export default function BeatBox({ defaultBpm = DEFAULT_BPM }: BeatBoxProps) {
   const [bpm, setBpm] = React.useState(defaultBpm)
   const [isPlaying, setIsPlaying] = React.useState(false)
   const [seed, setSeed] = React.useState<number>(() => Math.floor(Math.random() * 1_000_000))
@@ -375,7 +375,7 @@ export default function BeatBot({ defaultBpm = DEFAULT_BPM }: BeatBotProps) {
         const url = URL.createObjectURL(blob)
         const a = document.createElement("a")
         a.href = url
-        a.download = "beatbot-gpt5.wav"
+        a.download = "beatbox-gpt5.wav"
         document.body.appendChild(a); a.click(); a.remove()
         URL.revokeObjectURL(url)
       }
@@ -415,11 +415,11 @@ export default function BeatBot({ defaultBpm = DEFAULT_BPM }: BeatBotProps) {
         <div className="flex items-start gap-3">
           <div className="size-9 rounded-md bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 grid place-items-center">
             <Music2 className="size-5" />
-            <span className="sr-only">{'BeatBot logo'}</span>
+            <span className="sr-only">{'BeatBox logo'}</span>
           </div>
           <div>
             <CardTitle className="flex items-center gap-2">
-              {"BeatBot"}
+              {"BeatBox"}
               <span className="inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] uppercase tracking-wide text-neutral-600 dark:text-neutral-300 border-neutral-200 dark:border-neutral-700 ml-1">
                 {"GPT-5 Celebration"}
               </span>
